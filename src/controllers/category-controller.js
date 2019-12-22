@@ -17,7 +17,7 @@ exports.get = async (req, res, next) => {
 
 exports.getByName = async (req, res, next) => {
     try {
-        var data = await repository.get(res.body.name);
+        var data = await repository.getByName(req.params.name);
         res.status(200).send(data);
     } catch (e) {
         res.status(500).send({
@@ -27,8 +27,6 @@ exports.getByName = async (req, res, next) => {
 }
 
 exports.post = async (req, res, next) => {
-
-    console.log('teste');
     try {
         await repository.create(req.body);
         res.status(201).send({

@@ -16,7 +16,7 @@ exports.create = async (data) => {
 }
 
 exports.update = async (id, data) => {
-    await Client
+    await client
         .findByIdAndUpdate(id, {
             $set: {
                 name: data.name,

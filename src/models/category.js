@@ -6,7 +6,9 @@ const Schema = mongoose.Schema;
 const schema = new Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        trim: true,
+        index: true
     },
     description: {
         type: String,
@@ -18,14 +20,16 @@ const schema = new Schema({
     image: {
         type: String,
     },
-    client: {
+    customer: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Client'
+        ref: 'Customer'
     },
     products: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Product'
     }]
 });
+
+schema.index({ name: 1, client: 1 }, { unique: true });
 
 module.exports = mongoose.model('Category', schema);

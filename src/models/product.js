@@ -7,7 +7,9 @@ const schema = new Schema({
     title: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        index: true,
+        unique: true
     },
     slug: {
         type: String,

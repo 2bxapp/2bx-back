@@ -8,6 +8,7 @@ const authService = require('../services/auth-service');
 const emailService = require('../services/email-service');
 
 exports.post = async (req, res, next) => {
+    debugger
     let contract = new ValidationContract();
     contract.hasMinLen(req.body.name, 3, 'Name must contain minimum of 3 characteres');
     contract.isEmail(req.body.email, 'Invalid e-mail');
@@ -23,6 +24,7 @@ exports.post = async (req, res, next) => {
         await repository.create({
             name: req.body.name,
             email: req.body.email,
+            nickname: req.body.nickname,
             password: md5(req.body.password + global.SALT_KEY)
         });
 

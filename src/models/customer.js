@@ -10,10 +10,13 @@ const schema = new Schema({
     },
     nickname: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     email: {
         type: String,
+        index: true,
+        unique: true,
         required: true
     },
     password: {

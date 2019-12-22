@@ -13,22 +13,23 @@ mongoose.connect(config.connectionString);
 
 // Carrega os Models
 const Product = require('./models/product');
-const Customer = require('./models/customer');
-const Order = require('./models/order');
 const Client = require('./models/client');
+const Order = require('./models/order');
+const Customer = require('./models/customer');
 const Category = require('./models/category');
 
 // Carrega as Rotas
 const indexRoute = require('./routes/index-route');
 const productRoute = require('./routes/product-route');
-const customerRoute = require('./routes/customer-route');
+const clientRoute = require('./routes/client-route');
 const orderRoute = require('./routes/order-route');
 const categoryRoute = require('./routes/category-route');
-const clientRoute = require('./routes/client-route');
+const customerRoute = require('./routes/customer-route');
 
 app.use(bodyParser.json({
     limit: '5mb'
 }));
+
 app.use(bodyParser.urlencoded({
     extended: false
 }));
@@ -41,11 +42,17 @@ app.use(function (req, res, next) {
     next();
 });
 
+var swaggerUi = require('swagger-ui-express'),
+    swaggerDocument = require('./swagger.json');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api/v1', router);
+
 app.use('/', indexRoute);
-app.use('/products', productRoute);
-app.use('/customers', customerRoute);
-app.use('/orders', orderRoute);
+app.use('/product', productRoute);
 app.use('/client', clientRoute);
+app.use('/order', orderRoute);
+app.use('/customer', customerRoute);
 app.use('/category', categoryRoute);
 
 module.exports = app;

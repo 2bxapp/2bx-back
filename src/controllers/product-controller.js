@@ -87,7 +87,7 @@ exports.post = async (req, res, next) => {
             tags: req.body.tags,
             image: req.body.image,
             thumbnail: req.body.thumbnail,
-            category: req.body.categoryId
+            category: req.body.category
         });
         res.status(201).send({
             message: 'Product successfully created!'

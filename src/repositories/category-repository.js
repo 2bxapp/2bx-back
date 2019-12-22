@@ -6,16 +6,16 @@ const Category = mongoose.model('Category');
 exports.get = async () => {
     var res = await Category
         .find({}, 'image description name')
-        .populate('client', 'name')
+        .populate('customer', 'name')
         .populate('products', 'title image thumbnail price');
     return res;
 }
 
-exports.getName = async (name) => {
+exports.getByName = async (name) => {
     var res = await Category
-        .find({ name: name }, 'description thumbnail image')
+        .find({ name: { $regex: new RegExp(name, "i") } }, 'description thumbnail image')
+        .populate('products')
         .populate('client', 'name')
-        .populate('products', 'title image thumbnail price');
     return res;
 }
 

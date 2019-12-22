@@ -28,14 +28,15 @@ exports.getById = async (req, res, next) => {
 
 exports.post = async (req, res, next) => {
     try {
-        const token = req.body.token || req.query.token || req.headers['x-access-token'];
-        const data = await authService.decodeToken(token);
+        // const token = req.body.token || req.query.token || req.headers['x-access-token'];
+        // const data = await authService.decodeToken(token);
 
         await repository.create({
-            customer: data.id,
+            // customer: data.id,
+            customer: req.body.customer,
             number: guid.raw().substring(0, 6),
             table: req.body.table,
-            status: req.body.status,
+            status: "waiting",
             items: req.body.items
         });
         res.status(201).send({
