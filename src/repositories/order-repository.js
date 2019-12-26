@@ -6,7 +6,7 @@ exports.get = async () => {
     var res = await Order
         .find({}, 'number status customer items')
         .populate('customer', 'name')
-        .populate('items.product', 'title', 'items.product.category.name');
+        .populate('items.product', 'title');
     return res;
 }
 
