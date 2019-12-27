@@ -30,7 +30,7 @@ exports.post = async (req, res, next) => {
     try {
         await repository.create(req.body);
         res.status(201).send({
-            message: 'Order successfully created!'
+            message: 'Category successfully created!'
         });
     } catch (e) {
         console.log(e);
@@ -44,7 +44,7 @@ exports.patch = async (req, res, next) => {
     try {
         await repository.update(req.params.id, req.body);
         res.status(200).send({
-            message: 'Order successfully updated!'
+            message: 'Category successfully updated!'
         });
     } catch (e) {
         res.status(500).send({

@@ -1,9 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-
-const schema = new Schema({
+const schema = mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -20,14 +18,8 @@ const schema = new Schema({
     image: {
         type: String,
     },
-    customer: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Customer'
-    },
-    products: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Product'
-    }]
+    client: { type: mongoose.Schema.Types.ObjectId, ref: 'Client' },
+    products: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }]
 });
 
 schema.index({ name: 1, client: 1 }, { unique: true });

@@ -1,9 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-
-const schema = new Schema({
+const schema = mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -52,7 +50,8 @@ const schema = new Schema({
     },
     zipcode: {
         type: String,
-    }
+    },
+    orders: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Order' }]
 });
 
 module.exports = mongoose.model('Customer', schema);
