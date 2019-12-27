@@ -6,15 +6,33 @@ exports.get = async () => {
     var res = await Order
         .find({}, 'number status customer items')
         .populate('customer', 'name')
-        .populate('items.product', 'title category.name');
+        .populate([
+            {
+                path: 'items.product',
+                select: 'title',
+                populate: {
+                    path: 'category',
+                    select: 'name'
+                }
+            },
+        ])
     return res;
 }
 
 exports.getById = async (id) => {
     var res = await Order
-        .findOne({ id: id }, 'number status customer items')
+        .findOne({ _id: id }, 'number status customer items')
         .populate('customer', 'name')
-        .populate('items.product', 'title');
+        .populate([
+            {
+                path: 'items.product',
+                select: 'title',
+                populate: {
+                    path: 'category',
+                    select: 'name'
+                }
+            }
+        ]);
     return res;
 }
 
