@@ -26,6 +26,18 @@ exports.getById = async (req, res, next) => {
     }
 }
 
+
+exports.getByStatus = async (req, res, next) => {
+    try {
+        var data = await repository.getByStatus(req.params.status);
+        res.status(200).send(data);
+    } catch (e) {
+        res.status(500).send({
+            message: 'Failed to process requisition'
+        });
+    }
+}
+
 exports.post = async (req, res, next) => {
     try {
         // const token = req.body.token || req.query.token || req.headers['x-access-token'];

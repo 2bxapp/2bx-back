@@ -19,6 +19,22 @@ exports.get = async () => {
     return res;
 }
 
+exports.getByStatus = async (status) => {
+    var res = await Order
+        .find({ status: status }, 'number status customer table createdAt items')
+        .populate('customer', 'name')
+        .populate([
+            {
+                path: 'items.product',
+                select: 'title',
+                populate: {
+                    path: 'category',
+                    select: 'name'
+                }
+            }
+        ])
+}
+
 exports.getById = async (id) => {
     var res = await Order
         .findOne({ _id: id }, 'number status customer items')
