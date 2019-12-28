@@ -12,7 +12,7 @@ exports.get = async () => {
                 select: 'title',
                 populate: {
                     path: 'category',
-                    select: 'name'
+                    select: 'name image'
                 }
             },
         ])
@@ -29,7 +29,7 @@ exports.getByStatus = async (status) => {
                 select: 'title',
                 populate: {
                     path: 'category',
-                    select: 'name'
+                    select: 'name image'
                 }
             }
         ])
@@ -45,7 +45,7 @@ exports.getById = async (id) => {
                 select: 'title',
                 populate: {
                     path: 'category',
-                    select: 'name'
+                    select: 'name image'
                 }
             }
         ]);
