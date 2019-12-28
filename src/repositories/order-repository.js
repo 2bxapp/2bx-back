@@ -33,6 +33,8 @@ exports.getByStatus = async (status) => {
                 }
             }
         ])
+
+    return res;
 }
 
 exports.getById = async (id) => {
