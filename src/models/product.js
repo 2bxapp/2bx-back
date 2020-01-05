@@ -1,6 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const Menu = require('../models/menu');
 
 const schema = mongoose.Schema({
     title: {
@@ -42,7 +43,8 @@ const schema = mongoose.Schema({
     category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category'
-    }
+    },
+    menus: [ Menu ]
 });
 
 module.exports = mongoose.model('Product', schema);
