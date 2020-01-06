@@ -14,8 +14,9 @@ exports.get = async () => {
                     path: 'category',
                     select: 'name image'
                 }
-            },
+            }
         ])
+         
     return res;
 }
 
