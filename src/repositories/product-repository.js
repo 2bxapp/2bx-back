@@ -33,6 +33,16 @@ exports.getByTag = async (tag) => {
     return res;
 }
 
+
+exports.getByCategory = async (category) => {
+    const res = Product
+        .find({
+            category: category,
+            active: true
+        }, 'title description price tags image');
+    return res;
+}
+
 exports.create = async (data) => {
     var product = new Product(data);
     await product.save();

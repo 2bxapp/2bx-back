@@ -25,6 +25,7 @@ const clientRoute = require('./routes/client-route');
 const orderRoute = require('./routes/order-route');
 const categoryRoute = require('./routes/category-route');
 const customerRoute = require('./routes/customer-route');
+const chatbotRoute = require('./routes/chatbot-route');
 
 app.use(bodyParser.json({
     limit: '5mb'
@@ -54,5 +55,6 @@ app.use('/client', clientRoute);
 app.use('/order', orderRoute);
 app.use('/customer', customerRoute);
 app.use('/category', categoryRoute);
+app.use('/chatbot', chatbotRoute);
 
 module.exports = app;

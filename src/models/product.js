@@ -1,6 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const Menu = require('../models/menu');
 
 const schema = mongoose.Schema({
     title: {

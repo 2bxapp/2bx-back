@@ -47,6 +47,17 @@ exports.getByTag = async (req, res, next) => {
     }
 }
 
+exports.getByCategory = async (req, res, next) => {
+    try {
+        const data = await repository.getByCategory(req.params.category);
+        res.status(200).send(data);
+    } catch (e) {
+        res.status(500).send({
+            message: 'Failed to process requisition'
+        });
+    }
+}
+
 exports.post = async (req, res, next) => {
     let contract = new ValidationContract();
     contract.hasMinLen(req.body.title, 3, 'Title must contain minimum of 3 characteres');
