@@ -5,7 +5,7 @@ const Category = mongoose.model('Category');
 
 exports.get = async () => {
     var res = await Category
-        .find({}, 'image description name')
+        .find({}, '_id image description name')
         .populate('client', 'name')
         .populate('products');
     return res;

@@ -43,8 +43,7 @@ const schema = mongoose.Schema({
     category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category'
-    },
-    menu: [ Menu ]
+    }
 });
 
 module.exports = mongoose.model('Product', schema);

@@ -9,6 +9,7 @@ router.get('/', controller.get);
 router.get('/:slug', controller.getBySlug);
 router.get('/admin/:id', controller.getById);
 router.get('/tags/:tag', controller.getByTag);
+router.get('/category/:category', controller.getByCategory);
 router.post('/', controller.post);
 router.patch('/:id', controller.patch);
 router.delete('/', controller.delete);
