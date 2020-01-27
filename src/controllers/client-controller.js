@@ -2,9 +2,9 @@
 
 const repository = require('../repositories/client-repository');
 
-exports.get = async (req, res, next) => {
+exports.getById = async (req, res, next) => {
     try {
-        var data = await repository.get();
+        var data = await repository.getById(req.params.code);
         res.status(200).send(data);
     } catch (e) {
         res.status(500).send({
