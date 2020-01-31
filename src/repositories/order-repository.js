@@ -16,7 +16,7 @@ exports.get = async () => {
                 }
             }
         ])
-         
+
     return res;
 }
 
@@ -35,6 +35,24 @@ exports.getByStatus = async (status) => {
             }
         ])
 
+    return res;
+}
+
+exports.getByCustomer = async (customer) => {
+    var res = await Order
+        .find({ customer: customer }, 'number status customer createdAt items')
+        .sort({ createdAt: -1 })
+        .populate('customer', 'name')
+        .populate([
+            {
+                path: 'items.product',
+                select: 'title',
+                populate: {
+                    path: 'category',
+                    select: 'name image'
+                }
+            }
+        ])
     return res;
 }
 

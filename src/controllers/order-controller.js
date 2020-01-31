@@ -26,6 +26,17 @@ exports.getById = async (req, res, next) => {
     }
 }
 
+exports.getByCustomer = async (req, res, next) => {
+    try {
+        var data = await repository.getByCustomer(req.params.customer);
+        res.status(200).send(data);
+    } catch (e) {
+        res.status(500).send({
+            message: 'Failed to process requisition'
+        });
+    }
+}
+
 
 exports.getByStatus = async (req, res, next) => {
     try {
@@ -42,7 +53,6 @@ exports.post = async (req, res, next) => {
     try {
         // const token = req.body.token || req.query.token || req.headers['x-access-token'];
         // const data = await authService.decodeToken(token);
-
         await repository.create({
             // customer: data.id,
             customer: req.body.customer,
