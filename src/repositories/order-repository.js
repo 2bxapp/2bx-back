@@ -16,7 +16,6 @@ exports.get = async () => {
                 }
             }
         ])
-
     return res;
 }
 

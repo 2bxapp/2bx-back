@@ -37,11 +37,20 @@ const schema = mongoose.Schema(
             observation: {
                 type: String
             },
+            status: {
+                type: String,
+                required: true,
+                enum: ['waiting', 'preparing', 'done', 'delivering', 'paid', 'refused', 'cancelled'],
+                default: 'waiting'
+            },
             product: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Product'
             }
         }],
+        closed: {
+            type: Boolean,
+        }
     },
     {
         timestamps: true
