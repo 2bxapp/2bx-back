@@ -4,7 +4,7 @@ const Order = mongoose.model('Order');
 
 exports.get = async () => {
     var res = await Order
-        .find({}, 'number status customer table createdAt items')
+        .find({}, 'number status customer table createdAt closed items')
         .populate('customer', 'name')
         .populate([
             {
@@ -21,7 +21,7 @@ exports.get = async () => {
 
 exports.getByStatus = async (status) => {
     var res = await Order
-        .find({ status: status }, 'number status customer table createdAt items')
+        .find({ status: status }, 'number status customer table createdAt closed items')
         .populate('customer', 'name')
         .populate([
             {
@@ -39,7 +39,7 @@ exports.getByStatus = async (status) => {
 
 exports.getByCustomer = async (customer) => {
     var res = await Order
-        .find({ customer: customer }, 'number status customer createdAt items')
+        .find({ customer: customer }, 'number status customer createdAt closed items')
         .sort({ createdAt: -1 })
         .populate('customer', 'name')
         .populate([
@@ -57,7 +57,7 @@ exports.getByCustomer = async (customer) => {
 
 exports.getById = async (id) => {
     var res = await Order
-        .findOne({ _id: id }, 'number status customer items')
+        .findOne({ _id: id }, 'number status customer closed items')
         .populate('customer', 'name')
         .populate([
             {
