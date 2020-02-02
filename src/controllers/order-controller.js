@@ -59,7 +59,7 @@ exports.post = async (req, res, next) => {
             number: guid.raw().substring(0, 6),
             table: req.body.table,
             status: "waiting",
-            statusMotive: req.body,
+            statusMotive: req.body.statusMotive,
             items: req.body.items,
             closed: req.body.closed
         });
