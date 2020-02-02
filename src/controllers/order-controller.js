@@ -59,7 +59,9 @@ exports.post = async (req, res, next) => {
             number: guid.raw().substring(0, 6),
             table: req.body.table,
             status: "waiting",
-            items: req.body.items
+            statusMotive: req.body,
+            items: req.body.items,
+            closed: req.body.closed
         });
         res.status(201).send({
             message: 'Order successfully created!'
